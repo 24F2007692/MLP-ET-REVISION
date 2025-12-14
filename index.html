@@ -70,9 +70,9 @@
     <!-- Header -->
     <header class="text-center mb-6 bg-gradient-to-r from-indigo-900 to-purple-800 text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
         <h1 class="text-3xl md:text-4xl font-extrabold mb-2 uppercase tracking-tighter">MLP End Term: Ultimate Revision Guide</h1>
-        <p class="mt-3 text-red-200 text-sm font-bold bg-red-900/50 inline-block px-3 py-1 rounded">
-            Warning: Ye notes sirf revision ke liye hai.
-        </p>
+        <div class="inline-block bg-white/20 px-4 py-1 rounded-full text-sm font-semibold backdrop-blur-sm border border-white/30">
+            Mission 100/100
+        </div>
     </header>
 
     <!-- Content Grid -->
@@ -146,16 +146,29 @@
                     <div class="bg-green-50 p-1">TP</div>
                 </div>
                 <div class="text-sm space-y-1">
-                    <p><strong>Precision:</strong> $ \frac{TP}{TP + FP} $ (Focus: Pred 1 Col)</p>
-                    <p><strong>Recall:</strong> $ \frac{TP}{TP + FN} $ (Focus: Act 1 Row)</p>
+                    <p><strong>Precision:</strong> $ \frac{TP}{TP + FP} $ (Controls False Positives).</p>
+                    <p><strong>Recall:</strong> $ \frac{TP}{TP + FN} $ (Controls False Negatives).</p>
+                    <p><strong>Specificity (TNR):</strong> Correctly identified Negatives.</p>
                 </div>
             </div>
 
+            <!-- Metric Definitions -->
+            <div class="mb-4 text-sm border-t pt-2">
+                <h3 class="font-bold text-gray-800 mb-1">Metric Dictionary</h3>
+                <ul class="list-disc ml-4 space-y-1 text-xs text-gray-700">
+                    <li><strong>Accuracy:</strong> Overall correctness. Use ONLY if classes are balanced.</li>
+                    <li><strong>F1-score:</strong> Balance of P & R. Best for imbalanced data.</li>
+                    <li><strong>ROC-AUC:</strong> Threshold-independent. Ranks Positives > Negatives.</li>
+                    <li><strong>PR-AUC:</strong> Precision-Recall. Preferred for HIGHLY imbalanced data.</li>
+                    <li><strong>Log Loss:</strong> Measures probability quality (Confidence matters).</li>
+                </ul>
+            </div>
+
             <!-- R2 Score -->
-            <div class="mb-4">
+            <div class="mb-4 border-t pt-2">
                 <h3 class="font-bold text-gray-800">2. The R2 Score Formula</h3>
                 <div class="math-block text-center text-lg">
-                    $$ 1 - \frac{\text{SS}_{res} \text{ (Error)}}{\text{SS}_{tot} \text{ (Variance)}} $$
+                    $$ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} $$
                 </div>
                 <div class="trap-box">
                     <strong>Trap:</strong> SS<sub>tot</sub> (Mean se doori) hamesha <strong>Neeche</strong> aayega.<br>
@@ -164,13 +177,13 @@
             </div>
 
             <!-- RecSys & Avg -->
-            <div class="text-sm">
-                <p class="mb-2"><strong>3. Macro vs Weighted:</strong></p>
-                <ul class="list-disc ml-4 mb-3 text-xs text-gray-600">
+            <div class="text-sm border-t pt-2">
+                <p class="mb-1"><strong>3. Macro vs Weighted:</strong></p>
+                <ul class="list-disc ml-4 mb-2 text-xs text-gray-600">
                     <li><strong>Macro:</strong> Simple Avg. Listens to Minority.</li>
                     <li><strong>Weighted:</strong> Size matters. Listens to Majority.</li>
                 </ul>
-                <p><strong>4. RecSys (Collab Filtering):</strong></p>
+                <p class="mb-1"><strong>4. RecSys (Collab Filtering):</strong></p>
                 <div class="bg-gray-100 p-2 rounded text-xs text-center font-mono">
                     $ \text{Rating} = \frac{\sum (\text{Sim} \times \text{Rating})}{\sum \text{Sim}} $
                 </div>
@@ -193,6 +206,11 @@
                     </tr>
                 </thead>
                 <tbody class="divide-y divide-gray-100">
+                    <tr>
+                        <td class="p-1 font-bold">Logistic</td>
+                        <td class="code-font p-1">solver='saga'</td>
+                        <td class="p-1">REQUIRED for L1 / Elastic Net regularization.</td>
+                    </tr>
                     <tr>
                         <td class="p-1 font-bold">SGD</td>
                         <td class="code-font p-1">warm_start=True</td>
@@ -250,8 +268,18 @@
             <!-- Time Series -->
             <div class="mb-3">
                 <h3 class="font-bold text-gray-800 text-sm">2. Time Series Analysis</h3>
+                <div class="bg-purple-50 p-2 rounded text-xs mb-2">
+                    <p class="font-bold text-purple-800 mb-1">📌 ADF Test Decision Rule:</p>
+                    <p><strong>Null Hypothesis ($H_0$):</strong> Unit Root present (Non-Stationary).</p>
+                    <ul class="list-disc ml-4 mt-1 space-y-1">
+                        <li><strong>p ≤ 0.05:</strong> Reject $H_0$ → <span class="text-green-600 font-bold">Stationary</span> (Good).</li>
+                        <li><strong>p > 0.05:</strong> Fail to reject → <span class="text-red-600 font-bold">Non-Stationary</span>.</li>
+                    </ul>
+                    <p class="mt-1 text-gray-500 italic border-l-2 border-purple-300 pl-2">
+                        Memory hook: "ADF assumes non-stationary; small p-value breaks that assumption."
+                    </p>
+                </div>
                 <ul class="text-xs space-y-1 ml-4 list-disc text-gray-600">
-                    <li><strong>Stationarity:</strong> Mean/Var constant. ADF Test p < 0.05 (Good).</li>
                     <li><strong>Additive:</strong> T + S + E (Constant amp).</li>
                     <li><strong>Multiplicative:</strong> T × S × E (Growing amp).</li>
                 </ul>
