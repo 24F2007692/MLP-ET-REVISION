@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>MLP End Term: Ultimate Revision Guide</title>
+    <title>MLP Handwritten Revision Notes</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Kalam:wght@300;400;700&display=swap" rel="stylesheet">
     <script>
         window.MathJax = {
             tex: {
@@ -13,318 +14,387 @@
         };
     </script>
     <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&family=JetBrains+Mono:wght@500&display=swap');
-        
         body {
-            font-family: 'Inter', sans-serif;
+            background-color: #e0e0e0;
+            font-family: 'Kalam', cursive;
+            color: #1a237e; /* Blue Ink */
+            margin: 0;
+            padding: 20px;
+        }
+
+        .notebook-paper {
+            background-color: #fff;
+            background-image: linear-gradient(#e5e7eb 1px, transparent 1px);
+            background-size: 100% 2rem;
+            width: 100%;
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 3rem 4rem 3rem 5rem;
+            position: relative;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            line-height: 2rem;
+            font-size: 1.25rem;
+        }
+
+        /* Red Margin Line */
+        .notebook-paper::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 3.5rem;
+            width: 2px;
+            background-color: #ef4444; /* Red margin */
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            text-align: center;
+            text-decoration: underline;
+            text-decoration-color: #b71c1c;
+            margin-bottom: 2rem;
+            line-height: 3rem;
+            color: #000;
+        }
+
+        h2 {
+            font-size: 1.75rem;
+            font-weight: 700;
+            margin-top: 2rem;
+            margin-bottom: 1rem;
+            border-bottom: 2px solid #1a237e;
+            display: inline-block;
+            line-height: 2.5rem;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            font-weight: 700;
+            margin-top: 1rem;
+            text-decoration: underline;
+            line-height: 2rem;
+        }
+
+        p, li {
+            margin-bottom: 0; /* Align with lines */
+        }
+
+        ul {
+            list-style-type: none;
+            padding-left: 0;
+        }
+
+        li::before {
+            content: '-';
+            margin-right: 0.5rem;
+            font-weight: bold;
+            color: #000;
+        }
+
+        .highlight {
+            background-color: rgba(255, 255, 0, 0.3); /* Highlighter effect */
+            padding: 0 4px;
+            border-radius: 4px;
+        }
+
+        .trap {
+            color: #b71c1c; /* Red Ink for Traps */
+            font-weight: bold;
+        }
+
+        .math-box {
+            background-color: rgba(255, 255, 255, 0.8);
+            border: 2px dashed #1a237e;
+            padding: 1rem;
+            margin: 1rem 0;
+            text-align: center;
+        }
+
+        .code-snippet {
+            font-family: 'Courier New', Courier, monospace;
             background-color: #f3f4f6;
-            color: #1f2937;
-            -webkit-print-color-adjust: exact;
+            padding: 0 4px;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: bold;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+            font-size: 1.1rem;
         }
         
-        .code-font {
-            font-family: 'JetBrains+Mono', monospace;
-        }
-
-        .card {
-            break-inside: avoid;
-            page-break-inside: avoid;
-        }
-
-        /* Compact Grid for One-Page feel */
-        .masonry-grid {
-            column-count: 1;
-        }
-        @media (min-width: 768px) {
-            .masonry-grid { column-count: 2; }
-        }
-        @media (min-width: 1280px) {
-            .masonry-grid { column-count: 3; }
-        }
-
-        .math-block {
-            background: #fffbeb;
-            border-left: 4px solid #f59e0b;
+        th {
+            border-bottom: 2px solid #000;
+            text-align: left;
             padding: 0.5rem;
-            margin: 0.5rem 0;
-            font-weight: 600;
         }
-
-        .trap-box {
-            background: #fef2f2;
-            border: 1px dashed #ef4444;
-            color: #b91c1c;
-            padding: 0.5rem;
-            border-radius: 0.375rem;
-            margin-top: 0.5rem;
-            font-size: 0.85rem;
+        .watermark {
+            text-align: right;
+            margin-top: 50px;
+            font-size: 2rem;
+            color: rgba(44, 62, 80, 0.5);
+            font-family: 'Kalam', cursive;
+            transform: rotate(-2deg);
         }
         
-        h2 { letter-spacing: -0.025em; }
+        td {
+            border-bottom: 1px solid #ccc;
+            padding: 0.5rem;
+        }
+
+        @media print {
+            body {
+                background-color: white;
+            }
+            .notebook-paper {
+                box-shadow: none;
+                padding: 0;
+                margin: 0;
+                width: 100%;
+            }
+        }
     </style>
 </head>
-<body class="p-2 md:p-6 max-w-[1600px] mx-auto">
+<body>
 
-    <!-- Header -->
-    <header class="text-center mb-6 bg-gradient-to-r from-indigo-900 to-purple-800 text-white p-6 rounded-xl shadow-lg relative overflow-hidden">
-        <h1 class="text-3xl md:text-4xl font-extrabold mb-2 uppercase tracking-tighter">MLP End Term: Ultimate Revision Guide</h1>
-    </header>
+    <div class="notebook-paper">
+        <h1>MLP Ultimate Revision Guide</h1>
+        <p style="text-align: center; color: #b71c1c; font-weight: bold;">Mission 100/100 | Focus on TRAPS</p>
 
-    <!-- Content Grid -->
-    <div class="masonry-grid gap-4 space-y-4">
+        <!-- Section 1 -->
+        <h2>Section 1: The Golden Rules</h2>
+        <ul>
+            <li><strong>Pipeline Order:</strong> Always <span class="highlight">Impute &rarr; Scale &rarr; Model</span>.</li>
+            <li><strong>Data Leakage:</strong> NEVER call <span class="code-snippet">fit()</span> on Test Data. Only <span class="code-snippet">transform()</span>.</li>
+            <li><strong>Confusion Matrix:</strong> Sklearn Standard: <strong>Rows = True</strong>, <strong>Cols = Predicted</strong>.</li>
+            <li><strong>Imbalanced Data:</strong> Accuracy is <span class="trap">useless</span>. Use F1-Score or AUC.</li>
+            <li><strong>Scaling Requirement:</strong> SGD, KNN, SVM <span class="trap">REQUIRE</span> scaling. Trees do not.</li>
+            <li><strong>Partial Fit:</strong> <span class="code-snippet">model.partial_fit(X, y)</span> allows incremental learning. You <span class="trap">MUST</span> pass classes in the first call for classification.</li>
+            <li><strong>GridSearch Counting:</strong> Fits = $ \text{cv} \times (\text{combinations}) + 1 \text{ (refit)} $.</li>
+        </ul>
 
-        <!-- Section 1: Code Maths -->
-        <div class="card bg-white p-5 rounded-lg shadow-md border-t-4 border-indigo-500">
-            <h2 class="text-xl font-bold text-indigo-700 mb-3 border-b pb-2">
-                SECTION 1: CODE MATHS & SHAPES
-            </h2>
-
-            <!-- Item 1 -->
-            <div class="mb-4">
-                <h3 class="font-bold text-gray-800">1. ColumnTransformer (The "First Row" Logic)</h3>
-                <p class="text-sm text-gray-600 mb-1">Scenario: MinMaxScaler (A) + OHE(drop='first') (B)</p>
-                <ul class="list-disc ml-5 text-sm space-y-1">
-                    <li><strong>Order:</strong> Output order = Code order.</li>
-                    <li><strong>Categorical Sorting:</strong> Always sort A-Z first! <br><span class="code-font text-xs bg-gray-100 p-1 rounded">['Apple', 'Banana', 'Cherry']</span></li>
-                    <li><strong>Drop First:</strong> 'Apple' (Index 0) udd gaya.</li>
-                    <li><strong>Vector:</strong> Banana → <span class="code-font">[1, 0]</span>. Apple → <span class="code-font">[0, 0]</span>.</li>
-                </ul>
-                <div class="trap-box">
-                    <strong>Note:</strong> Sort karna mat bhoolna! Apple hamesha pehle aata hai aur wahi udega.
-                </div>
-            </div>
-
-            <!-- Item 2 -->
-            <div class="mb-4">
-                <h3 class="font-bold text-gray-800">2. FeatureUnion & Poly Features</h3>
-                <p class="text-sm"><strong>Union:</strong> Adds columns side-by-side.</p>
-                <div class="math-block text-sm text-center">
-                    Poly (Deg 2, No Bias) Formula: <br>
-                    $$ Features = \frac{N(N+3)}{2} $$
-                </div>
-                <p class="text-xs text-gray-600">
-                    <strong>Ex (N=4):</strong> Branch A (Poly) = 14. Branch B (PCA n=2) = 2. <br>
-                    <strong>Total Output:</strong> 14 + 2 = 16.
-                </p>
-            </div>
-
-            <!-- Item 3 -->
-            <div>
-                <h3 class="font-bold text-gray-800">3. Image Flattening (The "L" Trap)</h3>
-                <ul class="text-sm space-y-1">
-                    <li><strong>RGB:</strong> resize(h,w) → flatten → <span class="font-bold">h × w × 3</span></li>
-                    <li><strong>Grayscale ('L'):</strong> resize(h,w) → convert('L') → <span class="font-bold">h × w</span> <span class="text-red-600 font-bold">(3 Gayab!)</span></li>
-                </ul>
-            </div>
-        </div>
-
-        <!-- Section 2: Metrics -->
-        <div class="card bg-white p-5 rounded-lg shadow-md border-t-4 border-green-500">
-            <h2 class="text-xl font-bold text-green-700 mb-3 border-b pb-2">
-                SECTION 2: METRIC MASTERCLASS
-                <span class="text-xs text-gray-500 block font-normal mt-1">Pen & Paper Required</span>
-            </h2>
-
-            <!-- Confusion Matrix -->
-            <div class="mb-4">
-                <h3 class="font-bold text-gray-800">1. Confusion Matrix</h3>
-                <div class="grid grid-cols-3 gap-1 text-center text-xs font-mono my-2 border border-gray-200">
-                    <div class="bg-gray-100 p-1"></div>
-                    <div class="bg-gray-100 p-1 font-bold">Pred 0</div>
-                    <div class="bg-gray-100 p-1 font-bold">Pred 1</div>
-                    <div class="bg-gray-100 p-1 font-bold">Act 0</div>
-                    <div class="bg-green-50 p-1">TN</div>
-                    <div class="bg-red-50 p-1">FP</div>
-                    <div class="bg-gray-100 p-1 font-bold">Act 1</div>
-                    <div class="bg-red-50 p-1">FN</div>
-                    <div class="bg-green-50 p-1">TP</div>
-                </div>
-                <div class="text-sm space-y-1">
-                    <p><strong>Precision:</strong> $ \frac{TP}{TP + FP} $ (Controls False Positives).</p>
-                    <p><strong>Recall:</strong> $ \frac{TP}{TP + FN} $ (Controls False Negatives).</p>
-                    <p><strong>Specificity (TNR):</strong> Correctly identified Negatives.</p>
-                </div>
-            </div>
-
-            <!-- Metric Definitions -->
-            <div class="mb-4 text-sm border-t pt-2">
-                <h3 class="font-bold text-gray-800 mb-1">Metric Dictionary</h3>
-                <ul class="list-disc ml-4 space-y-1 text-xs text-gray-700">
-                    <li><strong>Accuracy:</strong> Overall correctness. Use ONLY if classes are balanced.</li>
-                    <li><strong>F1-score:</strong> Balance of P & R. Best for imbalanced data.</li>
-                    <li><strong>ROC-AUC:</strong> Threshold-independent. Ranks Positives > Negatives.</li>
-                    <li><strong>PR-AUC:</strong> Precision-Recall. Preferred for HIGHLY imbalanced data.</li>
-                    <li><strong>Log Loss:</strong> Measures probability quality (Confidence matters).</li>
-                </ul>
-            </div>
-
-            <!-- R2 Score -->
-            <div class="mb-4 border-t pt-2">
-                <h3 class="font-bold text-gray-800">2. The R2 Score Formula</h3>
-                <div class="math-block text-center text-lg">
-                    $$ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} $$
-                </div>
-                <div class="trap-box">
-                    <strong>Trap:</strong> SS<sub>tot</sub> (Mean se doori) hamesha <strong>Neeche</strong> aayega.<br>
-                    <strong>Negative R2:</strong> Model average prediction se bhi ghatiya hai.
-                </div>
-            </div>
-
-            <!-- RecSys & Avg -->
-            <div class="text-sm border-t pt-2">
-                <p class="mb-1"><strong>3. Macro vs Weighted:</strong></p>
-                <ul class="list-disc ml-4 mb-2 text-xs text-gray-600">
-                    <li><strong>Macro:</strong> Simple Avg. Listens to Minority.</li>
-                    <li><strong>Weighted:</strong> Size matters. Listens to Majority.</li>
-                </ul>
-                <p class="mb-1"><strong>4. RecSys (Collab Filtering):</strong></p>
-                <div class="bg-gray-100 p-2 rounded text-xs text-center font-mono">
-                    $ \text{Rating} = \frac{\sum (\text{Sim} \times \text{Rating})}{\sum \text{Sim}} $
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 3: Parameters -->
-        <div class="card bg-white p-5 rounded-lg shadow-md border-t-4 border-yellow-500">
-            <h2 class="text-xl font-bold text-yellow-700 mb-3 border-b pb-2">
-                SECTION 3: PARAMETERS
-                <span class="text-xs text-gray-500 block font-normal mt-1">Rutta Maar Lo</span>
-            </h2>
-
-            <table class="w-full text-xs text-left border-collapse">
-                <thead>
-                    <tr class="bg-yellow-50 text-yellow-900 border-b border-yellow-200">
-                        <th class="p-1">Algo</th>
-                        <th class="p-1">Param</th>
-                        <th class="p-1">Meaning</th>
-                    </tr>
-                </thead>
-                <tbody class="divide-y divide-gray-100">
-                    <tr>
-                        <td class="p-1 font-bold">Logistic</td>
-                        <td class="code-font p-1">solver='saga'</td>
-                        <td class="p-1">REQUIRED for L1 / Elastic Net regularization.</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">SGD</td>
-                        <td class="code-font p-1">warm_start=True</td>
-                        <td class="p-1">Resume training. Purane weights delete nahi.</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">SGD</td>
-                        <td class="code-font p-1">lr='adaptive'</td>
-                        <td class="p-1">Loss stuck? Speed / 5.</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">SGD</td>
-                        <td class="code-font p-1">penalty='l1'</td>
-                        <td class="p-1">Lasso. Weights → 0.</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">Tree</td>
-                        <td class="code-font p-1">ccp_alpha ↑</td>
-                        <td class="p-1">Pruning. Tree becomes simpler/small.</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">Bagging</td>
-                        <td class="code-font p-1">bootstrap=True</td>
-                        <td class="p-1">Random Forest (With Replacement).</td>
-                    </tr>
-                    <tr>
-                        <td class="p-1 font-bold">Pasting</td>
-                        <td class="code-font p-1">bootstrap=False</td>
-                        <td class="p-1">Without Replacement.</td>
-                    </tr>
-                </tbody>
-            </table>
-            
-            <div class="mt-3 text-sm">
-                <h4 class="font-bold">Tree Split Logic:</h4>
-                <p class="text-xs text-gray-600">Entry: Parent ≥ min_samples_split<br>Exit: BOTH Children ≥ min_samples_leaf</p>
-            </div>
-        </div>
-
-        <!-- Section 4: Special Theory -->
-        <div class="card bg-white p-5 rounded-lg shadow-md border-t-4 border-purple-500">
-            <h2 class="text-xl font-bold text-purple-700 mb-3 border-b pb-2">
-                SECTION 4: SPECIAL THEORY
-            </h2>
-
-            <!-- Unsupervised -->
-            <div class="mb-3">
-                <h3 class="font-bold text-gray-800 text-sm">1. Unsupervised Learning</h3>
-                <ul class="text-xs space-y-1 ml-4 list-disc text-gray-600">
-                    <li><strong>K-Means Elbow:</strong> Stop where graph gets FLAT. Inertia 0 = Overfitting. Use 'k-means++'.</li>
-                    <li><strong>PCA:</strong> <span class="code-font">n_components</span> kam karne se PC1 ki value change NAHI hoti.</li>
-                </ul>
-            </div>
-
-            <!-- Time Series -->
-            <div class="mb-3">
-                <h3 class="font-bold text-gray-800 text-sm">2. Time Series Analysis</h3>
-                <div class="bg-purple-50 p-2 rounded text-xs mb-2">
-                    <p class="font-bold text-purple-800 mb-1">📌 ADF Test Decision Rule:</p>
-                    <p><strong>Null Hypothesis ($H_0$):</strong> Unit Root present (Non-Stationary).</p>
-                    <ul class="list-disc ml-4 mt-1 space-y-1">
-                        <li><strong>p ≤ 0.05:</strong> Reject $H_0$ → <span class="text-green-600 font-bold">Stationary</span> (Good).</li>
-                        <li><strong>p > 0.05:</strong> Fail to reject → <span class="text-red-600 font-bold">Non-Stationary</span>.</li>
-                    </ul>
-                    <p class="mt-1 text-gray-500 italic border-l-2 border-purple-300 pl-2">
-                        Memory hook: "ADF assumes non-stationary; small p-value breaks that assumption."
-                    </p>
-                </div>
-                <ul class="text-xs space-y-1 ml-4 list-disc text-gray-600">
-                    <li><strong>Additive:</strong> T + S + E (Constant amp).</li>
-                    <li><strong>Multiplicative:</strong> T × S × E (Growing amp).</li>
-                </ul>
-            </div>
-
-            <!-- Target Types -->
-            <div>
-                <h3 class="font-bold text-gray-800 text-sm">3. Target Types (Trap!)</h3>
-                <div class="grid grid-cols-2 gap-2 text-xs mt-1">
-                    <div class="bg-gray-50 p-1 border rounded">[0, 1, 0] <br>→ <span class="font-bold text-purple-600">binary</span></div>
-                    <div class="bg-gray-50 p-1 border rounded">[0, 1, 2] <br>→ <span class="font-bold text-purple-600">multiclass</span></div>
-                    <div class="bg-gray-50 p-1 border rounded col-span-2">[[0, 1], [1, 0]] (2D) → <span class="font-bold text-red-600">multilabel-indicator</span></div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Section 5: Nano Patterns -->
-        <div class="card bg-white p-5 rounded-lg shadow-md border-t-4 border-pink-500">
-            <h2 class="text-xl font-bold text-pink-700 mb-3 border-b pb-2">
-                SECTION 5: NANO-PATTERNS
-                <span class="text-xs text-gray-500 block font-normal mt-1">Topper's Edge</span>
-            </h2>
-            
-            <ul class="space-y-3 text-sm list-disc ml-4">
-                <li class="pl-1">
-                    <strong>Pandas Slicing:</strong>
-                    <br><span class="code-font text-xs">loc[1:3]</span> → Rows 1, 2, 3 (Inclusive)
-                    <br><span class="code-font text-xs">iloc[1:3]</span> → Rows 1, 2 (Exclusive)
-                </li>
-                <li class="pl-1">
-                    <strong>NaN Type:</strong> Float hota hai!
-                </li>
-                <li class="pl-1">
-                    <strong>GridSearch Syntax:</strong>
-                    <br>Correct: <span class="code-font text-green-600">svm__C</span> (Double Underscore)
-                    <br>Wrong: <span class="code-font text-red-400">svm_C</span>
-                </li>
-                <li class="pl-1">
-                    <strong>Train vs Test (Paap lagega):</strong>
-                    <br>Train → <span class="code-font">fit_transform()</span>
-                    <br>Test → <span class="code-font">transform()</span> (NEVER FIT!)
-                </li>
-                <li class="pl-1">
-                    <strong>DummyRegressor:</strong> Always predicts Mean (strategy='mean'), ignores input.
-                </li>
-            </ul>
-        </div>
+        <!-- Section 2 -->
+        <h2>Section 2: Code Maths & Shapes</h2>
         
-    </div>
+        <h3>1. Pandas Power</h3>
+        <ul>
+            <li><strong>groupby:</strong> Split-apply-combine strategy. <span class="code-snippet">df.groupby('Cat')['Qty'].sum()</span></li>
+            <li><strong>dropna:</strong></li>
+            <li style="margin-left: 20px;"><code>how='any'</code>: Drops if ANY NA.</li>
+            <li style="margin-left: 20px;"><code>how='all'</code>: Drops if ALL NA.</li>
+            <li style="margin-left: 20px;"><code>subset=['col']</code>: Checks specific cols only.</li>
+        </ul>
 
+        <h3>2. Preprocessing Traps</h3>
+        <ul>
+            <li><strong>SimpleImputer:</strong> Strategies: 'mean', 'median', 'most_frequent'.</li>
+            <li><strong>StandardScaler:</strong> Centers data ($mean=0, \sigma=1$).</li>
+            <li><strong>MinMaxScaler:</strong> Scales to [0, 1]. <span class="trap">Sensitive to outliers.</span></li>
+            <li><strong>MaxAbsScaler:</strong> Divides by max absolute value. <span class="highlight">Preserves sparsity.</span></li>
+            <li><strong>ColumnTransformer:</strong> <span class="code-snippet">remainder='passthrough'</span> keeps columns. Default drops them!</li>
+            <li><strong>OneHotEncoder:</strong> <span class="code-snippet">sparse_output=False</span> gives array. Trap: 1 col with $k$ values &rarr; $k$ new cols.</li>
+        </ul>
+
+        <h3>3. ColumnTransformer Logic</h3>
+        <p>Scenario: MinMaxScaler (A) + OHE(drop='first') (B)</p>
+        <ul>
+            <li><strong>Order:</strong> Output order = Code order.</li>
+            <li><strong>Categorical Sorting:</strong> Always sort A-Z first!</li>
+            <li><strong>Drop First:</strong> The first alphabetically ('Apple') gets dropped.</li>
+        </ul>
+        <p class="trap">Sort karna mat bhoolna!</p>
+
+        <h3>4. Shape Shifters</h3>
+        <ul>
+            <li><strong>FeatureUnion:</strong> Adds cols side-by-side.</li>
+            <li><strong>Poly Features (Deg 2):</strong> Formula = $\frac{N(N+3)}{2}$</li>
+            <li><strong>Image Flattening:</strong></li>
+            <li style="margin-left: 20px;">RGB (200, 200, 3) &rarr; <strong>120,000</strong>.</li>
+            <li style="margin-left: 20px;">Gray (200, 200) &rarr; <strong>40,000</strong> (3 Gayab!).</li>
+        </ul>
+
+        <!-- Section 3 -->
+        <h2>Section 3: Metric Masterclass</h2>
+        
+        <h3>1. Confusion Matrix</h3>
+        <p><strong>Precision:</strong> $ \frac{TP}{TP + FP} $ (Controls False Positives).</p>
+        <p><strong>Recall:</strong> $ \frac{TP}{TP + FN} $ (Controls False Negatives).</p>
+        <p><strong>Specificity (TNR):</strong> Correctly identified Negatives.</p>
+
+        <div class="math-box">
+            <strong>Recall Calculation Example (PYQ 1376)</strong><br>
+            True Label 2 (Row 2): [3, 9, 3] &rarr; Total = 15.<br>
+            Correct Predicted (at 2,2): 3.<br>
+            $ \text{Recall} = \frac{3}{15} = 0.20 $
+        </div>
+
+        <h3>2. Naive Bayes Smoothing</h3>
+        <p>$$ P(x|y) = \frac{\text{count}(x, y) + \alpha}{\text{count}(y) + \alpha \cdot d} $$</p>
+
+        <h3>3. Metric Dictionary</h3>
+        <ul>
+            <li><strong>Macro Avg:</strong> Simple Average. Treats all classes equally.</li>
+            <li><strong>Weighted Avg:</strong> Weighted by support (size). Favors Majority.</li>
+            <li><strong>Accuracy:</strong> Use ONLY if balanced.</li>
+            <li><strong>F1-score:</strong> Best for imbalanced data.</li>
+            <li><strong>ROC-AUC:</strong> Threshold-independent. Ranks Positive > Negative.</li>
+            <li><strong>PR-AUC:</strong> Precision-Recall. For HIGHLY imbalanced data.</li>
+            <li><strong>Log Loss:</strong> Measures probability/confidence quality.</li>
+        </ul>
+
+        <h3>4. The R2 Score Formula</h3>
+        <div class="math-box">
+            $$ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} $$
+        </div>
+        <p class="trap">Trap: SS<sub>tot</sub> (Variance) always comes in Denominator.</p>
+
+        <!-- Section 4 -->
+        <h2>Section 4: Parameters (Rutta Maar Lo)</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Algo</th>
+                    <th>Param</th>
+                    <th>Meaning</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Logistic</td>
+                    <td>solver='saga'</td>
+                    <td>Required for ElasticNet.</td>
+                </tr>
+                <tr>
+                    <td>Logistic</td>
+                    <td>solver='liblinear'</td>
+                    <td>Good for small datasets.</td>
+                </tr>
+                <tr>
+                    <td>Log/SVM</td>
+                    <td>multi_class</td>
+                    <td>'ovr' (One-vs-Rest) or 'multinomial'.</td>
+                </tr>
+                <tr>
+                    <td>SGD(Reg)</td>
+                    <td>loss</td>
+                    <td>'squared_error', 'huber'.</td>
+                </tr>
+                <tr>
+                    <td>SGD(Clf)</td>
+                    <td>loss</td>
+                    <td>'log_loss', 'hinge' (SVM).</td>
+                </tr>
+                <tr>
+                    <td>SGD</td>
+                    <td>lr</td>
+                    <td>'constant', 'invscaling', 'adaptive'.</td>
+                </tr>
+                <tr>
+                    <td>KNN</td>
+                    <td>weights</td>
+                    <td>'uniform' vs 'distance'.</td>
+                </tr>
+                <tr>
+                    <td>Boosting</td>
+                    <td>learning_rate</td>
+                    <td>Shrinks contribution. Low LR = More trees.</td>
+                </tr>
+                <tr>
+                    <td>RF</td>
+                    <td>max_features</td>
+                    <td>Default: sqrt(n_features).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>Critical Logic Blocks</h3>
+        <ul>
+            <li><strong>Regularization:</strong>
+                <ul>
+                    <li>Ridge (L2): Shrinks weights.</li>
+                    <li>Lasso (L1): Zero weights (Feature Selection).</li>
+                    <li>ElasticNet: Combination of L1 + L2.</li>
+                </ul>
+            </li>
+            <li><strong>SVM Logic:</strong>
+                <ul>
+                    <li>Small C: Wide Margin (Underfit).</li>
+                    <li>Large C: Narrow Margin (Overfit).</li>
+                    <li>Kernels: 'linear', 'poly', 'rbf'.</li>
+                </ul>
+            </li>
+            <li><strong>KNN Logic:</strong>
+                <ul>
+                    <li>Lazy Learner: No training phase.</li>
+                    <li>Small k: High Variance (Overfit).</li>
+                    <li>Large k: High Bias (Underfit).</li>
+                    <li>Distance: Euclidean (L2), Manhattan (L1).</li>
+                </ul>
+            </li>
+        </ul>
+
+        <!-- Section 5 -->
+        <h2>Section 5: Special Theory</h2>
+        
+        <h3>1. Unsupervised Learning</h3>
+        <ul>
+            <li><strong>Inertia (SSE):</strong> Sum of squared distances to centroid. Minimize this.</li>
+            <li><strong>Elbow Method:</strong> Pick K where Inertia drop slows down.</li>
+            <li><strong>K-Means:</strong> <span class="code-snippet">k-means++</span> speeds up but <span class="trap">NO</span> global optimum guarantee.</li>
+            <li><strong>PCA:</strong> <span class="code-snippet">explained_variance_ratio_</span> shows info per component.</li>
+        </ul>
+
+        <h3>2. Time Series Analysis</h3>
+        <ul>
+            <li>Components: Trend, Seasonality, Noise.</li>
+            <li>Additive: $T + S + E$ (Constant Amplitude).</li>
+            <li>Multiplicative: $T \times S \times E$ (Growing Amplitude).</li>
+        </ul>
+        <div class="math-box" style="text-align: left;">
+            <strong>ADF Test Decision Rule:</strong><br>
+            $H_0$: Unit Root present (Non-Stationary).<br>
+            p <= 0.05 &rarr; Reject $H_0$ &rarr; <strong>Stationary (Good)</strong>.<br>
+            p > 0.05 &rarr; Fail to reject &rarr; <strong>Non-Stationary</strong>.
+        </div>
+
+        <h3>3. Text Processing</h3>
+        <ul>
+            <li><strong>CountVectorizer:</strong> Frequency count.</li>
+            <li><strong>TfidfVectorizer:</strong> Penalizes frequent words (like "the").</li>
+            <li><strong>Vocabulary:</strong> Returns dict {word: index}.</li>
+        </ul>
+
+        <h3>4. Target Types (Trap!)</h3>
+        <ul>
+            <li>[0, 1, 0] &rarr; binary</li>
+            <li>[0, 1, 2] &rarr; multiclass</li>
+            <li>[[0, 1], [1, 0]] &rarr; multilabel-indicator</li>
+        </ul>
+
+        <!-- Section 6 -->
+        <h2>Section 6: Nano-Patterns</h2>
+        <ul>
+            <li><strong>Pandas Slicing:</strong>
+                <ul>
+                    <li><span class="code-snippet">loc[0:2]</span> &rarr; 0, 1, 2 (Inclusive).</li>
+                    <li><span class="code-snippet">iloc[0:2]</span> &rarr; 0, 1 (Exclusive).</li>
+                    <li><span class="trap">Trap:</span> String index loc includes last element.</li>
+                </ul>
+            </li>
+            <li><strong>GridSearch Syntax:</strong> Correct: <span class="code-snippet">svm__C</span> (Double Underscore).</li>
+            <li><strong>Train vs Test:</strong> Train &rarr; fit_transform(), Test &rarr; transform() (NEVER FIT!).</li>
+            <li><strong>SelectKBest:</strong> Returns array with ONLY selected columns.</li>
+            <li><strong>DummyRegressor:</strong> Always predicts Mean, ignores input.</li>
+        </ul>
+        
+        <p style="text-align: center; margin-top: 3rem; font-size: 1.5rem; color: #b71c1c;"><strong>Good Luck! 100/100</strong></p>
+    </div>
+<div class="watermark">~KarTik🍁</div>
 </body>
 </html>
