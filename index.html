@@ -175,7 +175,7 @@
             <li><strong>Imbalanced Data:</strong> Accuracy is <span class="trap">useless</span>. Use F1-Score or AUC.</li>
             <li><strong>Scaling Requirement:</strong> SGD, KNN, SVM <span class="trap">REQUIRE</span> scaling. Trees do not.</li>
             <li><strong>Partial Fit:</strong> <span class="code-snippet">model.partial_fit(X, y)</span> allows incremental learning. You <span class="trap">MUST</span> pass classes in the first call for classification.</li>
-            <li><strong>GridSearch Counting:</strong> Fits = $ \text{cv} \times (\text{combinations}) + 1 \text{ (refit)} $.</li>
+            <li><strong>GridSearch Counting:</strong> Fits = $ \text{cv} \times (\text{combinations})$.</li>
         </ul>
 
         <!-- Section 2 -->
