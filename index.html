@@ -133,14 +133,6 @@
             text-align: left;
             padding: 0.5rem;
         }
-        .watermark {
-            text-align: right;
-            margin-top: 50px;
-            font-size: 2rem;
-            color: rgba(44, 62, 80, 0.5);
-            font-family: 'Kalam', cursive;
-            transform: rotate(-2deg);
-        }
         
         td {
             border-bottom: 1px solid #ccc;
@@ -164,7 +156,6 @@
 
     <div class="notebook-paper">
         <h1>MLP Ultimate Revision Guide</h1>
-        <p style="text-align: center; color: #b71c1c; font-weight: bold;">Focus on TRAPS</p>
 
         <!-- Section 1 -->
         <h2>Section 1: The Golden Rules</h2>
@@ -175,7 +166,7 @@
             <li><strong>Imbalanced Data:</strong> Accuracy is <span class="trap">useless</span>. Use F1-Score or AUC.</li>
             <li><strong>Scaling Requirement:</strong> SGD, KNN, SVM <span class="trap">REQUIRE</span> scaling. Trees do not.</li>
             <li><strong>Partial Fit:</strong> <span class="code-snippet">model.partial_fit(X, y)</span> allows incremental learning. You <span class="trap">MUST</span> pass classes in the first call for classification.</li>
-            <li><strong>GridSearch Counting:</strong> Fits = $ \text{cv} \times (\text{combinations})$.</li>
+            <li><strong>GridSearch Counting:</strong> Fits = $ \text{cv} \times (\text{combinations}) + 1 \text{ (refit)} $.</li>
         </ul>
 
         <!-- Section 2 -->
@@ -252,6 +243,16 @@
             $$ R^2 = 1 - \frac{\sum (y_i - \hat{y}_i)^2}{\sum (y_i - \bar{y})^2} $$
         </div>
         <p class="trap">Trap: SS<sub>tot</sub> (Variance) always comes in Denominator.</p>
+
+        <h3>5. RecSys Formulas</h3>
+        <div class="math-box">
+            <strong>Prediction Formula</strong><br>
+            $ \text{Rating} = \frac{\sum (\text{Sim} \times \text{Rating})}{\sum \text{Sim}} $
+        </div>
+        <div class="math-box">
+            <strong>User-User Matrix Formula (Cosine Similarity)</strong><br>
+            $$ \text{Sim}(u, v) = \frac{\sum (r_{ui} \cdot r_{vi})}{\sqrt{\sum r_{ui}^2} \cdot \sqrt{\sum r_{vi}^2}} $$
+        </div>
 
         <!-- Section 4 -->
         <h2>Section 4: Parameters (Rutta Maar Lo)</h2>
@@ -393,8 +394,8 @@
             <li><strong>DummyRegressor:</strong> Always predicts Mean, ignores input.</li>
         </ul>
         
-        <p style="text-align: center; margin-top: 3rem; font-size: 1.5rem; color: #b71c1c;"><strong>Good Luck! 100/100</strong></p>
+        <p style="text-align: center; margin-top: 3rem; font-size: 1.5rem; color: #b71c1c;"><strong>Good Luck! 100/100 Pakka!</strong></p>
     </div>
-<div class="watermark">~KarTik🍁</div>
+
 </body>
 </html>
